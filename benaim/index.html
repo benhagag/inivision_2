@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invision - דף נחיתה מותאם אישית</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" id="mystyle" href="style.css">
+</head>
+<body>
+    <div class="main-content-wrapper">
+        <!-- Invision Introduction Section -->
+        <div class="invision-intro">
+            <div class="container">
+                <h1 class="intro-text">
+                    Invision לקחה את המידע שסיפקתם ויצרה עבורכם דף נחיתה ממותג ומותאם אישית לבית הספר שלכם להתעמלות. הנה מה שעשינו בשבילכם:
+                </h1>
+
+                <!-- Feature Cards -->
+                <div class="feature-cards">
+                    <div class="feature-card">
+                        <i class="fas fa-paint-brush card-icon"></i>
+                        <h3>לוגו מותאם אישית</h3>
+                        <p>יצרנו לוגו שילדים והורים יאהבו, עם עיצוב דינמי וצבעוני המשקף את הפעילות הספורטיבית.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-palette card-icon"></i>
+                        <h3>סכמת צבעים מקצועית</h3>
+                        <p>בחרנו צבעים אנרגטיים וכיפיים שמתאימים לעסק שלכם בתחום ההתעמלות. לדוגמה, שילוב של גוונים כמו טורקיז וכתום.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-bullhorn card-icon"></i>
+                        <h3>תוכן שיווקי מדויק</h3>
+                        <p>יצרנו תכנים המתארים את החוגים המיוחדים שלכם לילדים, הכוללים מילות מפתח מותאמות.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-heading card-icon"></i>
+                        <h3>כותרות ותיאורים ממוקדים</h3>
+                        <p>הוספנו כותרות מקצועיות ותיאורים מושכים שמדברים ישירות אל קהל היעד שלכם.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-camera card-icon"></i>
+                        <h3>תמונות מקצועיות</h3>
+                        <p>בחרנו תמונות מדויקות מהמאגר שלנו, כולל ילדים בפעולה, אימונים באולם ספורט, ומדריכים מחייכים.</p>
+                    </div>
+
+                    <div class="feature-card">
+                        <i class="fas fa-mobile-alt card-icon"></i>
+                        <h3>דף נחיתה אופטימלי לנייד</h3>
+                        <p>דאגנו לכך שהדף שלכם מותאם לגמרי לגלישה במכשירים ניידים, לנוחות מקסימלית.</p>
+                    </div>
+                </div>
+
+                <!-- CTA Button -->
+                <div class="cta-section">
+                    <button class="cta-button">הירשם עכשיו</button>
+                </div>
+
+                <!-- Landing Page Preview Title -->
+                <h2 class="preview-title">צפו בדף הנחיתה שלכם</h2>
+            </div>
+        </div>
+
+        <!-- Original iframe wrapper -->
+        <div class="iframe-wrapper">
+            <iframe id="landing-page-frame" src="about:blank"></iframe>
+        </div>
+    </div>
+
+    <!-- Template content for iframe -->
+    <template id="iframe-content">
+        <div id="landing-page">
+            <header>
+                <nav>
+                    <div class="logo">
+                        <img src="logo-placeholder.png" alt="DafGym Logo" id="logo">
+                        <input type="file" id="logo-upload" accept="image/*" style="display: none;">
+                    </div>
+                    <ul>
+                        <li><a href="#home" class="nav-link"><i class="fas fa-home"></i> בית</a></li>
+                        <li><a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> אודותינו</a></li>
+                        <li><a href="#classes" class="nav-link"><i class="fas fa-dumbbell"></i> חוגים</a></li>
+                        <li><a href="#schedule" class="nav-link"><i class="fas fa-calendar-alt"></i> לוח זמנים</a></li>
+                        <li><a href="#team" class="nav-link"><i class="fas fa-users"></i> הצוות</a></li>
+                        <li><a href="#testimonials" class="nav-link"><i class="fas fa-comments"></i> לקוחות מספרים</a></li>
+                        <li><a href="#registration" class="nav-link"><i class="fas fa-user-plus"></i> הרשמה</a></li>
+                        <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> צור קשר</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section id="home">
+                <h1><i class="fas fa-star"></i> DafGym</h1>
+                <h2>בית ספר להתעמלות ואקרובטיקה בבית יצחק</h2>
+                <p><i class="fas fa-user-tie"></i> בניהולה של דפנה עצמון</p>
+            </section>
+
+            <section id="about">
+                <h2><i class="fas fa-info-circle"></i> אודותינו</h2>
+                <p>DafGym הוא בית ספר מוביל להתעמלות ואקרובטיקה בבית יצחק. מאז הקמתו בשנת 2010, אנו מחויבים לטיפוח כישרונות צעירים ולקידום אורח חיים בריא ופעיל.</p>
+            </section>
+
+            <section id="gallery">
+                <h2 id="gallery-title"><i class="fas fa-images"></i> גלריה</h2>
+                <div class="gallery-container">
+                    <div class="gallery-image">
+                        <img src="gallery-placeholder-1.jpg" alt="תמונת גלריה 1" id="gallery-1">
+                        <input type="file" id="gallery-upload-1" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="gallery-placeholder-2.jpg" alt="תמונת גלריה 2" id="gallery-2">
+                        <input type="file" id="gallery-upload-2" accept="image/*" style="display: none;">
+                    </div>
+                    <div class="gallery-image">
+                        <img src="gallery-placeholder-3.jpg" alt="תמונת גלריה 3" id="gallery-3">
+                        <input type="file" id="gallery-upload-3" accept="image/*" style="display: none;">
+                    </div>
+                </div>
+                <div class="gallery-controls">
+                    <button id="prev-image"><i class="fas fa-chevron-left"></i></button>
+                    <span id="image-counter">1/1</span>
+                    <button id="next-image"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </section>
+
+            <section id="classes">
+                <h2><i class="fas fa-dumbbell"></i> החוגים שלנו</h2>
+                <div class="class-grid" id="class-grid"></div>
+            </section>
+
+            <section id="schedule">
+                <h2><i class="fas fa-calendar-alt"></i> לוח זמנים</h2>
+                <button id="toggle-schedule">הצג/הסתר פירוט מלא</button>
+                <table id="schedule-table" class="hidden"></table>
+            </section>
+
+<section id="team">
+    <h2><i class="fas fa-users"></i> הצוות שלנו</h2>
+    <div class="team-grid">
+        <!-- Founder and Manager -->
+        <div class="team-member">
+            <div class="image-upload">
+                <label for="daphna-upload">
+                    <i class="fas fa-user-circle profile-icon" id="daphna-icon"></i>
+                </label>
+                <input type="file" id="daphna-upload" accept="image/*" style="display: none;">
+            </div>
+            <h3>דפנה עצמון</h3>
+            <p>מייסדת ומנהלת</p>
+        </div>
+        
+        <!-- Head Coach -->
+        <div class="team-member">
+            <div class="image-upload">
+                <label for="ron-upload">
+                    <i class="fas fa-user-circle profile-icon" id="ron-icon"></i>
+                </label>
+                <input type="file" id="ron-upload" accept="image/*" style="display: none;">
+            </div>
+            <h3>רון לוי</h3>
+            <p>מאמן ראשי</p>
+        </div>
+        
+        <!-- Fitness Instructor -->
+        <div class="team-member">
+            <div class="image-upload">
+                <label for="maya-upload">
+                    <i class="fas fa-user-circle profile-icon" id="maya-icon"></i>
+                </label>
+                <input type="file" id="maya-upload" accept="image/*" style="display: none;">
+            </div>
+            <h3>מאיה כהן</h3>
+            <p>מדריכת כושר והתעמלות</p>
+        </div>
+        
+        <!-- Yoga Instructor -->
+        <div class="team-member">
+            <div class="image-upload">
+                <label for="lior-upload">
+                    <i class="fas fa-user-circle profile-icon" id="lior-icon"></i>
+                </label>
+                <input type="file" id="lior-upload" accept="image/*" style="display: none;">
+            </div>
+            <h3>ליאור ברק</h3>
+            <p>מדריך יוגה ופילאטיס</p>
+        </div>
+        
+        <!-- Nutrition Specialist -->
+        <div class="team-member">
+            <div class="image-upload">
+                <label for="sara-upload">
+                    <i class="fas fa-user-circle profile-icon" id="sara-icon"></i>
+                </label>
+                <input type="file" id="sara-upload" accept="image/*" style="display: none;">
+            </div>
+            <h3>שרה יעקוב</h3>
+            <p>מומחית תזונה ובריאות</p>
+        </div>
+    </div>
+</section>
+
+            <section id="testimonials">
+                <h2><i class="fas fa-comments"></i> לקוחות מספרים</h2>
+                <div class="testimonial-container">
+                    <div class="testimonial-slider"></div>
+                    <div class="testimonial-controls">
+                        <button id="prev-testimonial"><i class="fas fa-chevron-right"></i></button>
+                        <span id="testimonial-counter"></span>
+                        <button id="next-testimonial"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="registration">
+                <h2><i class="fas fa-user-plus"></i> מסלולי רישום</h2>
+                <div class="registration-options">
+                    <div class="registration-option">
+                        <h3><i class="fas fa-star"></i> מסלול בסיסי</h3>
+                        <p>חוג אחד בשבוע - 200 ש"ח</p>
+                        <a href="#" class="btn" data-plan="basic">הרשמה</a>
+                    </div>
+                    <div class="registration-option">
+                        <h3><i class="fas fa-star"></i><i class="fas fa-star"></i> מסלול מתקדם</h3>
+                        <p>שני חוגים בשבוע - 285 ש"ח</p>
+                        <a href="#" class="btn" data-plan="advanced">הרשמה</a>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2><i class="fas fa-envelope"></i> צור קשר</h2>
+                <form id="contact-form">
+                    <input type="text" placeholder="שם מלא" required>
+                    <input type="email" placeholder="אימייל" required>
+                    <textarea placeholder="הודעה" required></textarea>
+                    <button type="submit">שלח</button>
+                </form>
+            </section>
+        </div>
+    </template>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InVision - הפכו את העסק שלכם למכונת שיווק דיגיטלי</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="hero">
+            <h1 class="main-title">
+                הפכו את העסק שלכם למכונת שיווק דיגיטלי
+                <span class="subtitle">באופן אוטומטי וללא מאמץ תוך דקות!</span>
+            </h1>
+            <div class="title-underline"></div>
+        </header>
+
+        <!-- Introduction Section -->
+        <section class="intro">
+            <h2 class="intro-title">
+                <i class="fas fa-rocket"></i>
+                עם InVision, תקים נוכחות דיגיטלית אפקטיבית שוטפת!
+            </h2>
+            
+            <!-- תוספת חדשה - שורת מחיר -->
+            <div class="price-section">
+                <span class="price-amount">199 ש"ח</span>
+                <span class="price-period">לחודש בלבד!</span>
+            </div>
+            
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>דף נחיתה ממותג מותאם אישית</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-images"></i>
+                    <span>תמונות מותאמות אישית מתוך מאגר מקצועי</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>תוכן שיווקי מבוסס מחקר מתחרים</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>פרסומים מנוהלים בלחיצת כפתור</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>ניטור בזמן אמת ושיפור תוצאות מתמיד</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secondary Description -->
+        <section class="secondary-desc">
+            <h2>רוצים לראות איך דף הנחיתה שלכם ייראה?</h2>
+            <p class="description">
+                תוך דקות, InVision תיצור עבורכם דף נחיתה ממותג, הכולל לוגו מותאם אישית, תמונות מקצועיות 
+                ותוכן שיווקי מדויק המבוסס על מחקר מתחרים ומילות מפתח חכמות. הכל יותאם בדיוק לצורכי העסק שלכם 
+                ולתחום הפעילות, כך שתוכלו למשוך יותר לקוחות ולשפר את הנוכחות הדיגיטלית שלכם – 
+                וכל זה בלחיצת כפתור אחת!
+            </p>
+        </section>
+
+        <!-- Registration Form -->
+        <section class="registration">
+            <div class="form-container">
+                <h3>לקבלת דף נחיתה</h3>
+                
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="fullname">שם מלא</label>
+                        <input type="text" id="fullname" required>
+                        <span class="hint">הזינו את שמכם כדי להתאים את הדף בצורה אישית עבורכם</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="business-name">שם העסק</label>
+                        <input type="text" id="business-name" required>
+                        <span class="hint">ספרו לנו איך קוראים לעסק שלכם, ונתאים את הלוגו והתוכן המושלם</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="business-type">תחום העסק</label>
+                            <div class="business-type-wrapper">
+                                <input type="text" 
+                                       id="business-type" 
+                                       list="business-suggestions" 
+                                       placeholder="הקלד או בחר מהרשימה"
+                                       required>
+                                <datalist id="business-suggestions">
+                                    <option value="קמעונאות"></option>
+                                    <option value="מסעדנות"></option>
+                                    <option value="בריאות"></option>
+                                    <option value="חינוך"></option>
+                                    <option value="טכנולוגיה"></option>
+                                    <option value="ספורט וכושר"></option>
+                                    <option value="יופי וטיפוח"></option>
+                                    <option value="בידור ופנאי"></option>
+                                    <option value="שירותים מקצועיים"></option>
+                                    <option value="בנייה ושיפוצים"></option>
+                                </datalist>
+                            </div>
+                            <span class="hint">הקלד או בחר את תחום העסק שלך</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="location">מיקום העסק</label>
+                            <div class="location-input">
+                                <input type="text" id="location" required>
+                                <button type="button" class="detect-location">
+                                    <i class="fas fa-location-dot"></i>
+                                </button>
+                            </div>
+                            <span class="hint">נזהה אוטומטית את מיקומכם</span>
+                        </div>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="google-login">
+                            <i class="fab fa-google"></i>
+                            התחבר עם Google
+                        </button>
+                        <button type="button" class="facebook-login">
+                            <i class="fab fa-facebook-f"></i>
+                            התחבר עם Facebook
+                        </button>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <a href="benaim/index.html" style="color: white;"> <span class="btn-text">התחל עכשיו</span> </a>
+                        <span class="btn-subtext">לחיצה אחת לדף נחיתה מעוצב ומותאם אישית!</span>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
