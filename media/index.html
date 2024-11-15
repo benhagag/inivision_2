@@ -19,11 +19,11 @@
     <!-- תפריט צד שמאל -->
     <nav class="side-nav">
         <ul>
-            <li class="nav-item" data-tooltip="לוח שנה" onclick="window.location.href = '../calendar_suggestions/index.html'">
+            <li class="nav-item" data-tooltip="לוח שנה" onclick= "empty_calendar ? window.location.href = '../calendar/index.html' : window.location.href = '../calendar_suggestions/index.html'">
                 <i class="fas fa-calendar-alt"></i>
                 <span class="tooltip">לוח שנה</span>
             </li>
-            <li class="nav-item" data-tooltip="דף נחיתה" onclick="window.location.href = '../landing_page/index.html'">
+            <li class="nav-item" data-tooltip="דף נחיתה" onclick="empty_calendar  ? window.location.href = '../landing_page/index.html?empty_calendar=1' : window.location.href = '../landing_page/index.html'">
                 <i class="fas fa-home"></i>
                 <span class="tooltip">דף נחיתה</span>
             </li>

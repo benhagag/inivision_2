@@ -1,4 +1,9 @@
+let empty_calendar;
 document.addEventListener('DOMContentLoaded', () => {
+
+    const urlParams         = new URLSearchParams(window.location.search);
+    empty_calendar          = urlParams.get('empty_calendar') || false; // Replace 'paramName' with the actual query parameter key
+
     // נתונים קבועים
     const topics = [
         "בית - עמוד הבית של האתר, כולל מבוא קצר על העסק ותמונה מרכזית.",
