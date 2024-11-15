@@ -279,6 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
             button.innerHTML = '<i class="fas fa-check"></i> הקמפיינים הופעלו!';
             showSuccessMessage();
         }, 1500);
+
+        setTimeout(() => {
+            window.location.href = '../calendar_suggestions/index.html';
+        }, 3000);
     };
 
     function checkAllApprovals() {
