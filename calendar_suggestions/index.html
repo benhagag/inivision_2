@@ -9,14 +9,20 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    
     <div class="top-bar">
         <button id="menu-button" class="icon-button">☰</button>
+        <button class="icon-button star-button" onclick="openPopup()">
+            <svg class="star-icon" viewBox="0 0 24 24" width="24" height="24">
+                <path fill="#5f6368" d="M12 2L7 12L2 7L12 12L17 2L22 7L12 12L7 22L12 12L22 17L17 22L12 12L2 17L7 12L12 2Z"/>
+            </svg>
+        </button>
         <button id="today-button">היום</button>
         <div class="navigation">
             <button id="prev-period" class="arrow-button">&#8594;</button>
+            <h2 id="current-period">אוקטובר 2024</h2>
             <button id="next-period" class="arrow-button">&#8592;</button>
         </div>
-        <h2 id="current-period">אוקטובר 2024</h2>
         <div class="view-dropdown">
             <button id="view-selector">חודש</button>
             <div class="dropdown-content">
@@ -31,7 +37,6 @@
         </div>
         <input type="text" id="search-field" placeholder="חיפוש...">
     </div>
-
     <!-- תפריט צד שמאל -->
     <nav class="side-nav">
         <ul>
@@ -147,6 +152,138 @@
             <p id="event-details-content"></p>
         </div>
     </div>
+
+        <!-- Marketing Strategy Popup -->
+        <div id="popupOverlay" class="popup-overlay">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h2>אסטרטגיה שיווקית - דפג'ים</h2>
+                    <span class="close-btn" onclick="closePopup()">&times;</span>
+                </div>
+    
+                <div class="intro-section">
+                    <p>בהתבסס על מחקר מילות מפתח ותגיות, גיבשנו עבורך תוכנית שיווקית מותאמת אישית להגעה מדויקת ללקוחות פוטנציאליים. התוכנית משלבת פרסומים אורגניים עם אפשרות לקידומים ממומנים, בהתאם לצרכי הקמפיין ולמטרותיך העסקיות. המערכת תנתח את הצלחת הפרסומים ותספק הצעות שיפור מבוססות תובנות מצטברות, וכל שינוי שתאשר יעודכן מיידית כדי להבטיח שהקמפיין יתפתח בזמן אמת.</p>
+                </div>
+    
+                <div class="marketing-plan">
+                    <div class="platform-box organic">
+                        <div class="platform-header">
+                            <i class="fab fa-facebook platform-icon"></i>
+                            <h3>אורגני</h3>
+                            <button class="approve-campaign-btn" onclick="approveCampaign('facebook-organic')">אשר קמפיין</button>
+                        </div>
+                        
+                        <div class="content-controls">
+                            <div class="quantity-control">
+                                <h5>פוסטים בחודש</h5>
+                                <div class="control-buttons">
+                                    <button onclick="updateQuantity('facebook-posts', -1)">-</button>
+                                    <span id="facebook-posts-quantity">3</span>
+                                    <button onclick="updateQuantity('facebook-posts', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="quantity-control">
+                                <h5>סטוריז בשבוע</h5>
+                                <div class="control-buttons">
+                                    <button onclick="updateQuantity('facebook-stories', -1)">-</button>
+                                    <span id="facebook-stories-quantity">5</span>
+                                    <button onclick="updateQuantity('facebook-stories', 1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <ul>
+                            <li>סיפורי הצלחה והמלצות</li>
+                            <li>אירועים בסטודיו</li>
+                            <li>הדגשת יתרונות</li>
+                            <li>תוכן חינוכי להורים</li>
+                        </ul>
+                    </div>
+    
+                    <div class="platform-box organic">
+                        <div class="platform-header">
+                            <i class="fab fa-instagram platform-icon"></i>
+                            <h3>אורגני</h3>
+                            <button class="approve-campaign-btn" onclick="approveCampaign('instagram-organic')">אשר קמפיין</button>
+                        </div>
+                        
+                        <div class="content-controls">
+                            <div class="quantity-control">
+                                <h5>פוסטים בחודש</h5>
+                                <div class="control-buttons">
+                                    <button onclick="updateQuantity('instagram-posts', -1)">-</button>
+                                    <span id="instagram-posts-quantity">3</span>
+                                    <button onclick="updateQuantity('instagram-posts', 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="quantity-control">
+                                <h5>סטוריז בשבוע</h5>
+                                <div class="control-buttons">
+                                    <button onclick="updateQuantity('instagram-stories', -1)">-</button>
+                                    <span id="instagram-stories-quantity">4</span>
+                                    <button onclick="updateQuantity('instagram-stories', 1)">+</button>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <ul>
+                            <li>תמונות מהאימונים</li>
+                            <li>סרטונים קצרים</li>
+                            <li>הצצה לפעילויות בסטודיו</li>
+                            <li>תוכן ויזואלי מרגש</li>
+                        </ul>
+                    </div>
+    
+                    <div class="platform-box paid">
+                        <div class="platform-header">
+                            <h3>קמפיין ממומן</h3>
+                            <button class="approve-campaign-btn" onclick="approveCampaign('paid')">אשר קמפיין</button>
+                        </div>
+                        
+                        <div class="budget">
+                            <span>450 ₪ / חודש</span>
+                            <div class="budget-control">
+                                <button onclick="updateBudget('campaign', -50)">-</button>
+                                <button onclick="updateBudget('campaign', 50)">+</button>
+                            </div>
+                        </div>
+                        
+                        <div class="campaign-summary">
+                            <p>הקמפיין <strong>"DAFGYM - התעמלות לילדים לקידום בריאות והתפתחות"</strong> מכוון להורים בגילאי 25-45 באזורי הסטודיו, עם דגש על תחומי בריאות, התפתחות ילדים וספורט. בתקציב חודשי של 450 ש"ח, הקמפיין משלב פוסטים וסטוריז ממומנים בפייסבוק ובאינסטגרם, המדגישים את יתרונות הסטודיו, סיפורי הצלחה, ואירועים מיוחדים.</p>
+                            <div class="campaign-actions">
+                                <button class="text-button" onclick="editCampaign()">עריכה</button>
+                                <button class="text-button" onclick="modifyCampaign()">שינוי</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="tips-section">
+                    <div class="tips-column">
+                        <h4>טיפים למשתמש</h4>
+                        <ul>
+                            <li>שלבו תמונות אותנטיות מהסטודיו</li>
+                            <li>תעדו אירועים מיוחדים</li>
+                            <li>שתפו חוויות של הורים וילדים</li>
+                        </ul>
+                    </div>
+                    <div class="tips-column">
+                        <h4>המערכת תבצע עבורך</h4>
+                        <ul>
+                            <li>פרסום בשעות אופטימליות</li>
+                            <li>שימוש במילות מפתח מותאמות</li>
+                            <li>אופטימיזציה של קהלי יעד</li>
+                        </ul>
+                    </div>
+                </div>
+    
+                <div class="approval-section">
+                    <button id="approveButton" class="approve-btn" onclick="approveStrategy()">
+                        הפעל קמפיינים
+                    </button>
+                </div>
+            </div>
+        </div>
 
     <script src="script.js"></script>
 </body>
