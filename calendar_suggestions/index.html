@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InVision Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <button id="menu-button" class="icon-button">☰</button>
+        <button id="today-button">היום</button>
+        <div class="navigation">
+            <button id="prev-period" class="arrow-button">&#8594;</button>
+            <button id="next-period" class="arrow-button">&#8592;</button>
+        </div>
+        <h2 id="current-period">אוקטובר 2024</h2>
+        <div class="view-dropdown">
+            <button id="view-selector">חודש</button>
+            <div class="dropdown-content">
+                <a href="#" data-view="month">חודש</a>
+                <a href="#" data-view="week">שבוע</a>
+                <a href="#" data-view="day">יום</a>
+            </div>
+        </div>
+        <div class="view-toggle">
+            <button id="calendar-view" class="icon-button active">📅</button>
+            <button id="grid-view" class="icon-button">⋮⋮⋮</button>
+        </div>
+        <input type="text" id="search-field" placeholder="חיפוש...">
+    </div>
+
+    <!-- תפריט צד שמאל -->
+    <nav class="side-nav">
+        <ul>
+            <li class="nav-item active" data-tooltip="לוח שנה">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="tooltip">לוח שנה</span>
+            </li>
+            <li class="nav-item" data-tooltip="דף נחיתה">
+                <i class="fas fa-home"></i>
+                <span class="tooltip">דף נחיתה</span>
+            </li>
+            <li class="nav-item" data-tooltip="המדיה שלי">
+                <i class="fas fa-images"></i>
+                <span class="tooltip">המדיה שלי</span>
+            </li>
+            <li class="nav-item" data-tooltip="דוחות">
+                <i class="fas fa-chart-bar"></i>
+                <span class="tooltip">דוחות</span>
+            </li>
+            <li class="nav-item" data-tooltip="הגדרות">
+                <i class="fas fa-cog"></i>
+                <span class="tooltip">הגדרות</span>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- כפתור אישור ופרסום כללי לתצוגת רשת -->
+        <div id="global-approval" class="global-approval-container" style="display: none;">
+            <button id="approve-all-button" class="approve-all-button">אישור ופרסום כללי</button>
+        </div>
+
+        <div id="sidebar">
+            <button id="add-event" class="add-button">+</button>
+            <div class="filter-container">
+                <h3>סינון</h3>
+                <div class="filter-option">
+                    <input type="checkbox" id="facebook" checked>
+                    <label for="facebook">פייסבוק</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="instagram" checked>
+                    <label for="instagram">אינסטגרם</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="post" checked>
+                    <label for="post">פוסט</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="story" checked>
+                    <label for="story">סטורי</label>
+                </div>
+                <div class="filter-option">
+                    <input type="checkbox" id="sponsored" checked>
+                    <label for="sponsored">ממומן</label>
+                </div>
+            </div>
+        </div>
+
+        <div id="calendar">
+            <div id="calendar-body"></div>
+        </div>
+    </main>
+
+    <!-- תבנית למלבן תוכן בתצוגת רשת -->
+    <template id="content-card-template">
+        <div class="content-card">
+            <div class="management-buttons">
+                <button class="approve-button">אישור</button>
+                <span class="separator">|</span>
+                <button class="edit-button">שינוי</button>
+                <span class="separator">|</span>
+                <button class="delete-button">מחיקה</button>
+            </div>
+            <div class="card-content">
+                <!-- תוכן דינמי יוכנס כאן -->
+            </div>
+        </div>
+    </template>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>מה תרצה להוסיף?</h2>
+            <div class="event-types">
+                <button class="event-type" data-type="post">פוסט</button>
+                <button class="event-type" data-type="story">סטורי</button>
+            </div>
+            <h3>באיזה פלטפורמות?</h3>
+            <div class="platform-types">
+                <button class="platform-type" data-platform="facebook">פייסבוק</button>
+                <button class="platform-type" data-platform="instagram">אינסטגרם</button>
+            </div>
+            <input type="date" id="event-date">
+            <input type="text" id="event-title" placeholder="נושא האירוע">
+            <button id="add-event-button">הוסף</button>
+        </div>
+    </div>
+
+    <div id="event-details-popup" class="popup">
+        <div class="popup-content">
+            <div class="popup-header">
+                <div class="management-buttons">
+                    <button class="approve-button">אישור</button>
+                    <span class="separator">|</span>
+                    <button class="edit-button">שינוי</button>
+                    <span class="separator">|</span>
+                    <button class="delete-button">מחיקה</button>
+                </div>
+                <span class="close">&times;</span>
+            </div>
+            <h2 id="event-details-title"></h2>
+            <p id="event-details-content"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
