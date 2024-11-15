@@ -113,7 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveNotesBtn = document.getElementById('save-notes');
     const closeModalBtn = document.querySelector('.close-btn');
 
-  // Predefined images from your project (example)
+    // Predefined images from your project (example)
     const projectImages = [
         'images/1.jpeg',
         'images/2.jpeg',
@@ -132,17 +132,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Upload Handler
     uploadButton.addEventListener('click', () => {
-        // Automatically proceed with predefined images
-        handleImageUpload();
+        // Open file dialog, but ensure predefined images are always displayed
+        fileInput.click();
     });
 
-    // Function to handle predefined image upload
-    function handleImageUpload() {
+    // Function to handle file input change
+    fileInput.addEventListener('change', (event) => {
+        const files = Array.from(event.target.files);
         
+        // Clear the existing content in mediaGrid and add predefined images
         mediaGrid.classList.remove('empty');
         mediaGrid.innerHTML = '';
 
-        // Loop through the 13 images
+        // Display the predefined images first
         projectImages.forEach((imageUrl, index) => {
             const imageDescription = state.imageDescriptions[index];
 
@@ -191,7 +193,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
             mediaGrid.appendChild(card);
         });
-    }
+
+        // Display the files selected by the user
+        files.forEach(file => {
+            const imageUrl = URL.createObjectURL(file);
+            
+            const card = document.createElement('div');
+            card.className = 'media-card';
+
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = file.name;
+            img.classList.add('media-image');
+            card.appendChild(img);
+            mediaGrid.appendChild(card);
+        });
+    });
     // Notes Modal Functions
     function openNotesModal(imageUrl, imageId) {
         state.currentImageId = imageId;
