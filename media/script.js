@@ -113,43 +113,56 @@ document.addEventListener('DOMContentLoaded', () => {
     const saveNotesBtn = document.getElementById('save-notes');
     const closeModalBtn = document.querySelector('.close-btn');
 
+  // Predefined images from your project (example)
+    const projectImages = [
+        '../images/1.jpeg',
+        '../images/2.jpeg',
+        '../images/3.jpeg',
+        '../images/4.jpeg',
+        '../images/5.jpeg',
+        '../images/6.jpeg',
+        '../images/7.jpeg',
+        '../images/8.jpeg',
+        '../images/9.jpeg',
+        '../images/10.jpeg',
+        '../images/11.jpeg',
+        '../images/12.jpeg',
+        '../images/13.jpeg',
+    ];
+
     // Upload Handler
     uploadButton.addEventListener('click', () => {
-        fileInput.click();
+        // Automatically proceed with predefined images
+        handleImageUpload();
     });
 
-    fileInput.addEventListener('change', (event) => {
-        const files = Array.from(event.target.files);
-
-        if (files.length !== 13) {
-            alert('נא להעלות בדיוק 13 קבצים');
-            return;
-        }
-
+    // Function to handle predefined image upload
+    function handleImageUpload() {
+        
         mediaGrid.classList.remove('empty');
         mediaGrid.innerHTML = '';
-        
-        files.forEach((file, index) => {
+
+        // Loop through the 13 images
+        projectImages.forEach((imageUrl, index) => {
             const imageDescription = state.imageDescriptions[index];
-            const imageUrl = URL.createObjectURL(file);
 
             const card = document.createElement('div');
             card.className = 'media-card';
             card.dataset.imageId = imageDescription.id;
 
-            // הוספת כפתור ההערות
+            // Add notes button
             const notesButton = `
                 <button class="notes-btn" title="הוסף הערות">
                     <i class="fas fa-pencil-alt"></i>
                 </button>
             `;
 
-            // בדיקה אם יש הערות קיימות לתמונה זו
+            // Check if there are existing notes for this image
             const currentDescription = state.notes[imageDescription.id] || imageDescription.description;
 
             card.innerHTML = `
                 ${notesButton}
-                <img src="${imageUrl}" alt="${file.name}" class="media-image">
+                <img src="${imageUrl}" alt="Image ${index + 1}" class="media-image">
                 <div class="media-content">
                     <div class="media-description">${currentDescription}</div>
                     <div class="media-quality">איכות: ${imageDescription.quality}</div>
@@ -162,10 +175,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
 
-            // הוספת מאזין לכפתור ההערות
+            // Add event listener for notes button
             const notesBtn = card.querySelector('.notes-btn');
             
-            // עדכון צבע הכפתור אם יש הערות קיימות
+            // Update button color if notes exist
             if (state.notes[imageDescription.id]) {
                 const notesBtnIcon = notesBtn.querySelector('i');
                 notesBtnIcon.style.color = '#34a853';
@@ -178,8 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             mediaGrid.appendChild(card);
         });
-    });
-
+    }
     // Notes Modal Functions
     function openNotesModal(imageUrl, imageId) {
         state.currentImageId = imageId;
