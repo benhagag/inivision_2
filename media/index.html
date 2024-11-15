@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAFGYM - מערכת ניהול מדיה</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- שורה עליונה -->
+    <div class="top-bar">
+        <div class="user-info">
+            <span>שלום, משתמש</span>
+        </div>
+    </div>
+
+    <!-- תפריט צד שמאל -->
+    <nav class="side-nav">
+        <ul>
+            <li class="nav-item" data-tooltip="לוח שנה">
+                <i class="fas fa-calendar-alt"></i>
+                <span class="tooltip">לוח שנה</span>
+            </li>
+            <li class="nav-item" data-tooltip="דף נחיתה">
+                <i class="fas fa-home"></i>
+                <span class="tooltip">דף נחיתה</span>
+            </li>
+            <li class="nav-item active" data-tooltip="המדיה שלי">
+                <i class="fas fa-images"></i>
+                <span class="tooltip">המדיה שלי</span>
+            </li>
+            <li class="nav-item" data-tooltip="דוחות">
+                <i class="fas fa-chart-bar"></i>
+                <span class="tooltip">דוחות</span>
+            </li>
+            <li class="nav-item" data-tooltip="הגדרות">
+                <i class="fas fa-cog"></i>
+                <span class="tooltip">הגדרות</span>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- תוכן ראשי -->
+    <main>
+        <!-- עמודה ימנית - סינונים -->
+        <div id="right-column">
+            <div class="filter-section">
+                <h3>סינון לפי קטגוריה</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" value="training" checked> אימונים</label>
+                    <label><input type="checkbox" value="competitions" checked> תחרויות</label>
+                    <label><input type="checkbox" value="events" checked> אירועים</label>
+                    <label><input type="checkbox" value="team" checked> צוות</label>
+                    <label><input type="checkbox" value="instruction" checked> הדרכה</label>
+                </div>
+
+                <h3>סינון לפי תאריך</h3>
+                <select id="date-filter">
+                    <option value="all">הכל</option>
+                    <option value="today">היום</option>
+                    <option value="week">השבוע האחרון</option>
+                    <option value="month">החודש האחרון</option>
+                </select>
+
+                <h3>סינון לפי סוג קובץ</h3>
+                <div class="filter-options">
+                    <label><input type="checkbox" value="jpg" checked> JPG</label>
+                    <label><input type="checkbox" value="png" checked> PNG</label>
+                    <label><input type="checkbox" value="svg" checked> SVG</label>
+                </div>
+            </div>
+        </div>
+        
+        <!-- תוכן מרכזי - גריד המדיה -->
+        <div id="main-content">
+            <div class="upload-section">
+                <button id="upload-button" class="upload-btn">
+                    <i class="fas fa-upload"></i>
+                    העלאת קבצים
+                </button>
+                <input type="file" id="file-input" multiple accept="image/*" style="display: none;">
+            </div>
+            <div id="media-grid" class="media-grid empty">
+                <!-- מצב ריק -->
+                <div class="empty-state">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>אין כרגע קבצים במערכת</p>
+                    <p>לחץ על "העלאת קבצים" כדי להתחיל</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- פופאפ הערות -->
+    <div id="notes-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>הוספת הערות לתמונה</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <div class="modal-explanation">
+                <i class="fas fa-info-circle"></i>
+                <p>
+                    הערות שתוסיף יעזרו למערכת להבין טוב יותר את התוכן של התמונה ולשפר את השימוש בה.
+                    למשל: איכות התמונה, רעיונות לשימוש, תיאור מפורט יותר, או טאגים נוספים.
+                </p>
+            </div>
+            <div class="modal-body">
+                <div class="notes-preview">
+                    <img id="notes-image-preview" src="" alt="תמונה נבחרת">
+                </div>
+                <div class="notes-form">
+                    <textarea id="notes-input" placeholder="הוסף את הערותיך כאן..."></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="save-notes" class="primary-btn">שמור הערות</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
