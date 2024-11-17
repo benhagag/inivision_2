@@ -1,12 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Initialize new features
+    // Top Section Feature Cards and CTA
     const ctaButton = document.querySelector('.cta-button');
     const featureCards = document.querySelectorAll('.feature-card');
-
-    // Add CTA Button functionality
-    ctaButton.addEventListener('click', () => {
-        alert('תודה על התעניינותך! נציג יצור איתך קשר בהקדם.');
-    });
 
     // Add hover effects for feature cards
     featureCards.forEach(card => {
@@ -17,34 +12,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
         card.addEventListener('mouseleave', () => {
             icon.style.transform = 'scale(1) rotate(0)';
-            icon.style.color = '#00b4d8';
+            icon.style.color = '#ff69b4';
         });
     });
 
-    // Initialize iframe content
-    const iframe = document.getElementById('landing-page-frame');
-    const template = document.getElementById('iframe-content');
-    
-    // Write content to iframe
-    iframe.contentWindow.document.open();
-    iframe.contentWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="he" dir="rtl">
-        <head>
-            <meta charset="UTF-8">
-            <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-            <style>${document.querySelector('link').innerText}</style>
-        </head>
-        <body>
-            ${template.innerHTML}
-        </body>
-        </html>
-    `);
-    iframe.contentWindow.document.close();
-
-    // Get iframe document
-    const iframeDoc = iframe.contentWindow.document;
+    // CTA Button functionality
+    ctaButton?.addEventListener('click', () => {
+        const registrationSection = document.getElementById('registration');
+        registrationSection.scrollIntoView({ behavior: 'smooth' });
+    });
 
     // Classes Data
     const classes = [
@@ -62,20 +38,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: 'פירמידות', day: 'ד', time: '15:15-16:15', price: 75, icon: 'monument' }
     ];
 
-    // Testimonials Data
-    const testimonials = [
-        { text: "החוגים ב-DafGym שינו את חיי בתי. היא התפתחה פיזית ומנטלית!", author: "רונית, אמא לילדה בת 8" },
-        { text: "המדריכים מקצועיים ומסורים. ממליץ בחום!", author: "אבי, אבא לשני ילדים" },
-        { text: "האווירה בחוגים נהדרת. בתי מצפה לכל שיעור!", author: "מיכל, אמא לילדה בת 10" },
-        { text: "ההתקדמות של בני מדהימה. תודה לצוות המקצועי!", author: "דני, אבא לילד בן 7" },
-        { text: "החוגים פיתחו אצל בתי בטחון עצמי וכושר גופני", author: "שרה, אמא לילדה בת 12" },
-        { text: "המאמנים נהדרים ומעניקים יחס אישי לכל ילד", author: "יעל, אמא לשני ילדים" }
-    ];
-
     // Initialize Classes Grid
-    const classGrid = iframeDoc.getElementById('class-grid');
+    const classGrid = document.getElementById('class-grid');
     classes.forEach(cls => {
-        const classCard = iframeDoc.createElement('div');
+        const classCard = document.createElement('div');
         classCard.className = 'class-card';
         classCard.innerHTML = `
             <i class="fas fa-${cls.icon}"></i>
@@ -87,52 +53,66 @@ document.addEventListener('DOMContentLoaded', () => {
         classGrid.appendChild(classCard);
     });
 
-    // Gallery Functionality
-    let galleryImages = iframeDoc.querySelectorAll('.gallery-image img');
-    const prevImageBtn = iframeDoc.getElementById('prev-image');
-    const nextImageBtn = iframeDoc.getElementById('next-image');
-    const imageCounter = iframeDoc.getElementById('image-counter');
+    // Gallery Functionality with Image Upload
     let currentImageIndex = 0;
-    let isEditing = false;
+    const galleryImages = document.querySelectorAll('.gallery-image');
+    const prevImageBtn = document.getElementById('prev-image');
+    const nextImageBtn = document.getElementById('next-image');
+    const imageCounter = document.getElementById('image-counter');
 
-    function showImages(startIndex) {
-        galleryImages.forEach((img, index) => {
-            if (index >= startIndex && index < startIndex + 3) {
-                img.parentElement.style.display = 'block';
-            } else {
-                img.parentElement.style.display = 'none';
+    // Enhanced Gallery Image Upload
+    galleryImages.forEach((galleryImage, index) => {
+        const img = galleryImage.querySelector('img');
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'image/*';
+        input.style.display = 'none';
+        galleryImage.appendChild(input);
+
+        img.addEventListener('click', () => {
+            input.click();
+        });
+
+        input.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    img.src = event.target.result;
+                };
+                reader.readAsDataURL(file);
             }
         });
-        imageCounter.textContent = `${Math.ceil((startIndex + 1) / 3)} / ${Math.ceil(galleryImages.length / 3)}`;
-    }
-
-    function updateGallery() {
-        galleryImages = iframeDoc.querySelectorAll('.gallery-image img');
-        showImages(currentImageIndex);
-    }
-
-    showImages(currentImageIndex);
-
-    prevImageBtn.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex - 3 + galleryImages.length) % galleryImages.length;
-        showImages(currentImageIndex);
     });
 
-    nextImageBtn.addEventListener('click', () => {
-        currentImageIndex = (currentImageIndex + 3) % galleryImages.length;
-        showImages(currentImageIndex);
+    function showImages() {
+        galleryImages.forEach((img, index) => {
+            img.style.display = index === currentImageIndex ? '1' : '0.5';
+        });
+        imageCounter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+    }
+
+    showImages();
+
+    prevImageBtn?.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+        showImages();
     });
 
+    nextImageBtn?.addEventListener('click', () => {
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        showImages();
+    });
+
+    // Auto-rotate gallery every 5 seconds
     setInterval(() => {
-        if (!isEditing) {
-            currentImageIndex = (currentImageIndex + 3) % galleryImages.length;
-            showImages(currentImageIndex);
-        }
+        currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+        showImages();
     }, 5000);
 
     // Schedule Table
-    const scheduleTable = iframeDoc.getElementById('schedule-table');
-    const toggleScheduleBtn = iframeDoc.getElementById('toggle-schedule');
+    const scheduleTable = document.getElementById('schedule-table');
+    const toggleScheduleBtn = document.getElementById('toggle-schedule');
     
     function initializeScheduleTable() {
         const tableHeader = `
@@ -158,18 +138,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initializeScheduleTable();
 
-    toggleScheduleBtn.addEventListener('click', () => {
+    toggleScheduleBtn?.addEventListener('click', () => {
         scheduleTable.classList.toggle('hidden');
         toggleScheduleBtn.textContent = scheduleTable.classList.contains('hidden') ? 
             'הצג פירוט מלא' : 'הסתר פירוט מלא';
     });
 
-    // Testimonials Slider
+    // Testimonials
+    const testimonials = [
+        { text: "החוגים ב-DafGym שינו את חיי בתי. היא התפתחה פיזית ומנטלית!", author: "רונית, אמא לילדה בת 8" },
+        { text: "המדריכים מקצועיים ומסורים. ממליץ בחום!", author: "אבי, אבא לשני ילדים" },
+        { text: "האווירה בחוגים נהדרת. בתי מצפה לכל שיעור!", author: "מיכל, אמא לילדה בת 10" },
+        { text: "ההתקדמות של בני מדהימה. תודה לצוות המקצועי!", author: "דני, אבא לילד בן 7" },
+        { text: "החוגים פיתחו אצל בתי בטחון עצמי וכושר גופני", author: "שרה, אמא לילדה בת 12" },
+        { text: "המאמנים נהדרים ומעניקים יחס אישי לכל ילד", author: "יעל, אמא לשני ילדים" }
+    ];
+
     let currentTestimonial = 0;
-    const testimonialSlider = iframeDoc.querySelector('.testimonial-slider');
-    const prevTestimonialBtn = iframeDoc.getElementById('prev-testimonial');
-    const nextTestimonialBtn = iframeDoc.getElementById('next-testimonial');
-    const testimonialCounter = iframeDoc.getElementById('testimonial-counter');
+    const testimonialSlider = document.querySelector('.testimonial-slider');
+    const prevTestimonialBtn = document.getElementById('prev-testimonial');
+    const nextTestimonialBtn = document.getElementById('next-testimonial');
+    const testimonialCounter = document.getElementById('testimonial-counter');
 
     function showTestimonial() {
         testimonialSlider.innerHTML = `
@@ -183,12 +172,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     showTestimonial();
 
-    prevTestimonialBtn.addEventListener('click', () => {
+    prevTestimonialBtn?.addEventListener('click', () => {
         currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
         showTestimonial();
     });
 
-    nextTestimonialBtn.addEventListener('click', () => {
+    nextTestimonialBtn?.addEventListener('click', () => {
         currentTestimonial = (currentTestimonial + 1) % testimonials.length;
         showTestimonial();
     });
@@ -200,10 +189,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (file) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    imgElement.src = event.target.result;
-                    if (imgElement.classList.contains('profile-icon')) {
+                    if (imgElement.tagName.toLowerCase() === 'img') {
+                        imgElement.src = event.target.result;
+                    } else {
                         imgElement.style.backgroundImage = `url(${event.target.result})`;
                         imgElement.style.backgroundSize = 'cover';
+                        imgElement.style.backgroundPosition = 'center';
                         imgElement.innerHTML = '';
                     }
                 };
@@ -213,13 +204,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Logo Upload
-    const logoUpload = iframeDoc.getElementById('logo-upload');
-    const logoImg = iframeDoc.getElementById('logo');
-    
+    const logoUpload = document.getElementById('logo-upload');
+    const logoImg = document.getElementById('logo');
     if (logoImg) {
-        logoImg.addEventListener('click', () => {
-            logoUpload.click();
-        });
+        logoImg.addEventListener('click', () => logoUpload.click());
         handleImageUpload(logoUpload, logoImg);
     }
 
@@ -227,34 +215,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const teamMembers = [
         { uploadId: 'daphna-upload', iconId: 'daphna-icon' },
         { uploadId: 'coach1-upload', iconId: 'coach1-icon' },
-        { uploadId: 'coach2-upload', iconId: 'coach2-icon' }
+        { uploadId: 'coach2-upload', iconId: 'coach2-icon' },
+        { uploadId: 'coach3-upload', iconId: 'coach3-icon' }
     ];
 
     teamMembers.forEach(member => {
-        const input = iframeDoc.getElementById(member.uploadId);
-        const icon = iframeDoc.getElementById(member.iconId);
-        
-        if (icon) {
-            icon.addEventListener('click', () => {
-                input.click();
-            });
+        const input = document.getElementById(member.uploadId);
+        const icon = document.getElementById(member.iconId);
+        if (icon && input) {
+            icon.addEventListener('click', () => input.click());
             handleImageUpload(input, icon);
         }
     });
 
-    // Gallery Image Uploads
-    galleryImages.forEach((img, index) => {
-        const input = iframeDoc.getElementById(`gallery-upload-${index + 1}`);
-        if (input) {
-            img.addEventListener('click', () => {
-                input.click();
-            });
-            handleImageUpload(input, img);
-        }
-    });
-
     // Registration Form Handling
-    iframeDoc.querySelectorAll('.btn[data-plan]').forEach(button => {
+    document.querySelectorAll('.btn[data-plan]').forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const plan = button.getAttribute('data-plan');
@@ -263,35 +238,33 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Contact Form
-    const contactForm = iframeDoc.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('תודה על פנייתך! נחזור אליך בהקדם.');
-            contactForm.reset();
-        });
-    }
+    const contactForm = document.getElementById('contact-form');
+    contactForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('תודה על פנייתך! נחזור אליך בהקדם.');
+        contactForm.reset();
+    });
 
     // Smooth Scroll Navigation
-    iframeDoc.querySelectorAll('nav a').forEach(anchor => {
+    document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const sectionId = this.getAttribute('href');
-            iframeDoc.querySelector(sectionId).scrollIntoView({
+            document.querySelector(sectionId)?.scrollIntoView({
                 behavior: 'smooth'
             });
         });
     });
 
     // Active Section Highlighting
-    const sections = iframeDoc.querySelectorAll('section');
-    const navLinks = iframeDoc.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
 
-    iframe.contentWindow.addEventListener('scroll', () => {
+    window.addEventListener('scroll', () => {
         let current = '';
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            if (iframe.contentWindow.pageYOffset >= sectionTop - 60) {
+            if (window.pageYOffset >= sectionTop - 60) {
                 current = section.getAttribute('id');
             }
         });

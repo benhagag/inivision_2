@@ -6,7 +6,7 @@
     <title>Invision - דף נחיתה מותאם אישית</title>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" id="mystyle" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="main-content-wrapper">
@@ -66,16 +66,9 @@
             </div>
         </div>
 
-        <!-- Original iframe wrapper -->
-        <div class="iframe-wrapper">
-            <iframe id="landing-page-frame" src="about:blank"></iframe>
-        </div>
-    </div>
-
-    <!-- Template content for iframe -->
-    <template id="iframe-content">
-        <div id="landing-page">
-            <header>
+        <!-- Landing Page Content -->
+        <div id="landing-page" class="container">
+            <header class="main-header">
                 <nav>
                     <div class="logo">
                         <img src="logo-placeholder.png" alt="DafGym Logo" id="logo">
@@ -94,36 +87,39 @@
                 </nav>
             </header>
 
-            <section id="home">
-                <h1><i class="fas fa-star"></i> DafGym</h1>
-                <h2>בית ספר להתעמלות ואקרובטיקה בבית יצחק</h2>
-                <p><i class="fas fa-user-tie"></i> בניהולה של דפנה עצמון</p>
+            <section id="home" class="hero-section">
+                <div class="hero-content">
+                    <h1><i class="fas fa-star"></i> DafGym</h1>
+                    <h2>בית ספר להתעמלות ואקרובטיקה בבית יצחק</h2>
+                    <p><i class="fas fa-user-tie"></i> בניהולה של דפנה עצמון</p>
+                </div>
             </section>
 
             <section id="about">
                 <h2><i class="fas fa-info-circle"></i> אודותינו</h2>
-                <p>DafGym הוא בית ספר מוביל להתעמלות ואקרובטיקה בבית יצחק. מאז הקמתו בשנת 2010, אנו מחויבים לטיפוח כישרונות צעירים ולקידום אורח חיים בריא ופעיל.</p>
+                <p>DafGym הוא בית ספר מוביל להתעמלות ואקרובטיקה בבית יצחק. מאז הקמתו בשנת 2010, אנו מחויבים לטיפוח כישרונות צעירים ולקידום אורח חיים בריא ופעיל. הצוות המקצועי שלנו, בהובלתה של דפנה עצמון, מתמחה בפיתוח יכולות פיזיות ומנטליות של כל תלמיד, תוך דגש על ביטחון עצמי, משמעת ועבודת צוות.</p>
+                <p>אנו מציעים מגוון רחב של חוגים לכל הגילאים, החל מגיל 4 ועד בוגרים, ומשתמשים בציוד מתקדם ובשיטות אימון חדשניות. בDafGym, אנו מאמינים שכל ילד יכול למצוא את התחום שבו הוא מצטיין ולפתח אותו לרמה הגבוהה ביותר.</p>
             </section>
 
             <section id="gallery">
                 <h2 id="gallery-title"><i class="fas fa-images"></i> גלריה</h2>
-                <div class="gallery-container">
+                  <div class="gallery-container">
                     <div class="gallery-image">
-                        <img src="gallery-placeholder-1.jpg" alt="תמונת גלריה 1" id="gallery-1">
+                        <img src="images/1.jpg" alt="תמונת גלריה 1" id="gallery-1">
                         <input type="file" id="gallery-upload-1" accept="image/*" style="display: none;">
                     </div>
                     <div class="gallery-image">
-                        <img src="gallery-placeholder-2.jpg" alt="תמונת גלריה 2" id="gallery-2">
+                        <img src="images/2.jpg" alt="תמונת גלריה 2" id="gallery-2">
                         <input type="file" id="gallery-upload-2" accept="image/*" style="display: none;">
                     </div>
                     <div class="gallery-image">
-                        <img src="gallery-placeholder-3.jpg" alt="תמונת גלריה 3" id="gallery-3">
-                        <input type="file" id="gallery-upload-3" accept="image/*" style="display: none;">
+                        <img src="images/3.jpg" alt="תמונת גלריה 3" id="gallery-3">
+                        <input type="file" id="gallery-upload-3" accept="image/*" style="display: none;">                         
                     </div>
                 </div>
                 <div class="gallery-controls">
                     <button id="prev-image"><i class="fas fa-chevron-left"></i></button>
-                    <span id="image-counter">1/1</span>
+                    <span id="image-counter">1/3</span>
                     <button id="next-image"><i class="fas fa-chevron-right"></i></button>
                 </div>
             </section>
@@ -136,73 +132,63 @@
             <section id="schedule">
                 <h2><i class="fas fa-calendar-alt"></i> לוח זמנים</h2>
                 <button id="toggle-schedule">הצג/הסתר פירוט מלא</button>
-                <table id="schedule-table" class="hidden"></table>
+                <div class="schedule-container">
+                    <table id="schedule-table" class="hidden"></table>
+                </div>
             </section>
 
-<section id="team">
-    <h2><i class="fas fa-users"></i> הצוות שלנו</h2>
-    <div class="team-grid">
-        <!-- Founder and Manager -->
-        <div class="team-member">
-            <div class="image-upload">
-                <label for="daphna-upload">
-                    <i class="fas fa-user-circle profile-icon" id="daphna-icon"></i>
-                </label>
-                <input type="file" id="daphna-upload" accept="image/*" style="display: none;">
-            </div>
-            <h3>דפנה עצמון</h3>
-            <p>מייסדת ומנהלת</p>
-        </div>
-        
-        <!-- Head Coach -->
-        <div class="team-member">
-            <div class="image-upload">
-                <label for="ron-upload">
-                    <i class="fas fa-user-circle profile-icon" id="ron-icon"></i>
-                </label>
-                <input type="file" id="ron-upload" accept="image/*" style="display: none;">
-            </div>
-            <h3>רון לוי</h3>
-            <p>מאמן ראשי</p>
-        </div>
-        
-        <!-- Fitness Instructor -->
-        <div class="team-member">
-            <div class="image-upload">
-                <label for="maya-upload">
-                    <i class="fas fa-user-circle profile-icon" id="maya-icon"></i>
-                </label>
-                <input type="file" id="maya-upload" accept="image/*" style="display: none;">
-            </div>
-            <h3>מאיה כהן</h3>
-            <p>מדריכת כושר והתעמלות</p>
-        </div>
-        
-        <!-- Yoga Instructor -->
-        <div class="team-member">
-            <div class="image-upload">
-                <label for="lior-upload">
-                    <i class="fas fa-user-circle profile-icon" id="lior-icon"></i>
-                </label>
-                <input type="file" id="lior-upload" accept="image/*" style="display: none;">
-            </div>
-            <h3>ליאור ברק</h3>
-            <p>מדריך יוגה ופילאטיס</p>
-        </div>
-        
-        <!-- Nutrition Specialist -->
-        <div class="team-member">
-            <div class="image-upload">
-                <label for="sara-upload">
-                    <i class="fas fa-user-circle profile-icon" id="sara-icon"></i>
-                </label>
-                <input type="file" id="sara-upload" accept="image/*" style="display: none;">
-            </div>
-            <h3>שרה יעקוב</h3>
-            <p>מומחית תזונה ובריאות</p>
-        </div>
-    </div>
-</section>
+            <section id="team">
+                <h2><i class="fas fa-users"></i> הצוות שלנו</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="image-upload">
+                            <label for="daphna-upload">
+                                <i class="fas fa-user-circle profile-icon" id="daphna-icon"></i>
+                            </label>
+                            <input type="file" id="daphna-upload" accept="image/*" style="display: none;">
+                        </div>
+                        <h3>דפנה עצמון</h3>
+                        <p class="role">מייסדת ומנהלת</p>
+                        <p class="description">דפנה היא מאמנת התעמלות מוסמכת עם ניסיון של למעלה מ-20 שנה. היא ייסדה את DafGym מתוך תשוקה לפיתוח יכולות גופניות ומנטליות של ילדים ונוער.</p>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="image-upload">
+                            <label for="coach1-upload">
+                                <i class="fas fa-user-circle profile-icon" id="coach1-icon"></i>
+                            </label>
+                            <input type="file" id="coach1-upload" accept="image/*" style="display: none;">
+                        </div>
+                        <h3>שירה כהן</h3>
+                        <p class="role">מאמנת התעמלות קרקע</p>
+                        <p class="description">שירה היא אלופת ישראל לשעבר בהתעמלות קרקע, עם ניסיון אימון של 10 שנים.</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="image-upload">
+                            <label for="coach2-upload">
+                                <i class="fas fa-user-circle profile-icon" id="coach2-icon"></i>
+                            </label>
+                            <input type="file" id="coach2-upload" accept="image/*" style="display: none;">
+                        </div>
+                        <h3>יעל לוי</h3>
+                        <p class="role">מאמנת אקרובטיקה</p>
+                        <p class="description">יעל היא בעלת תואר ראשון בחינוך גופני ומתמחה באקרובטיקה ובפיתוח גמישות.</p>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="image-upload">
+                            <label for="coach3-upload">
+                                <i class="fas fa-user-circle profile-icon" id="coach3-icon"></i>
+                            </label>
+                            <input type="file" id="coach3-upload" accept="image/*" style="display: none;">
+                        </div>
+                        <h3>נועה ברק</h3>
+                        <p class="role">מאמנת כוח וגמישות</p>
+                        <p class="description">נועה היא פיזיותרפיסטית ומאמנת כושר מוסמכת, המתמחה בשיפור כוח וגמישות.</p>
+                    </div>
+                </div>
+            </section>
 
             <section id="testimonials">
                 <h2><i class="fas fa-comments"></i> לקוחות מספרים</h2>
@@ -221,28 +207,80 @@
                 <div class="registration-options">
                     <div class="registration-option">
                         <h3><i class="fas fa-star"></i> מסלול בסיסי</h3>
-                        <p>חוג אחד בשבוע - 200 ש"ח</p>
-                        <a href="#" class="btn" data-plan="basic">הרשמה</a>
+                        <p class="price">חוג אחד בשבוע</p>
+                        <p class="amount">200 ש"ח</p>
+                        <ul class="features">
+                            <li>חוג אחד לבחירה</li>
+                            <li>ציוד מלא</li>
+<li>מדריך מקצועי</li>
+                            <li>אימון שבועי</li>
+                            <li>מפגש ניסיון חינם</li>
+                        </ul>
+                        <a href="#" class="btn" data-plan="basic">הרשמה למסלול בסיסי</a>
                     </div>
-                    <div class="registration-option">
+
+                    <div class="registration-option featured">
+                        <div class="popular-tag">הכי פופולרי</div>
                         <h3><i class="fas fa-star"></i><i class="fas fa-star"></i> מסלול מתקדם</h3>
-                        <p>שני חוגים בשבוע - 285 ש"ח</p>
-                        <a href="#" class="btn" data-plan="advanced">הרשמה</a>
+                        <p class="price">שני חוגים בשבוע</p>
+                        <p class="amount">285 ש"ח</p>
+                        <ul class="features">
+                            <li>שני חוגים לבחירה</li>
+                            <li>ציוד מלא</li>
+                            <li>מדריך מקצועי</li>
+                            <li>2 אימונים שבועיים</li>
+                            <li>מפגש ניסיון חינם</li>
+                            <li>ייעוץ אישי</li>
+                        </ul>
+                        <a href="#" class="btn" data-plan="advanced">הרשמה למסלול מתקדם</a>
+                    </div>
+
+                    <div class="registration-option">
+                        <h3><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> מסלול מקצועי</h3>
+                        <p class="price">שלושה חוגים ומעלה בשבוע</p>
+                        <p class="amount">400 ש"ח</p>
+                        <ul class="features">
+                            <li>שלושה חוגים ומעלה</li>
+                            <li>ציוד מלא</li>
+                            <li>מדריך מקצועי צמוד</li>
+                            <li>3+ אימונים שבועיים</li>
+                            <li>מפגש ניסיון חינם</li>
+                            <li>ייעוץ אישי</li>
+                            <li>תוכנית אימונים אישית</li>
+                        </ul>
+                        <a href="#" class="btn" data-plan="professional">הרשמה למסלול מקצועי</a>
                     </div>
                 </div>
             </section>
 
             <section id="contact">
                 <h2><i class="fas fa-envelope"></i> צור קשר</h2>
-                <form id="contact-form">
-                    <input type="text" placeholder="שם מלא" required>
-                    <input type="email" placeholder="אימייל" required>
-                    <textarea placeholder="הודעה" required></textarea>
-                    <button type="submit">שלח</button>
-                </form>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <p>בית יצחק, מרכז הספורט</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-phone"></i>
+                            <p>050-1234567</p>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-envelope"></i>
+                            <p>info@dafgym.co.il</p>
+                        </div>
+                    </div>
+                    <form id="contact-form">
+                        <input type="text" placeholder="שם מלא" required>
+                        <input type="email" placeholder="אימייל" required>
+                        <input type="tel" placeholder="טלפון" required>
+                        <textarea placeholder="הודעה" required></textarea>
+                        <button type="submit">שלח הודעה</button>
+                    </form>
+                </div>
             </section>
         </div>
-    </template>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
